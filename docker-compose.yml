@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  wcfservice1:
+    image: ${DOCKER_REGISTRY-}wcfservice1
+    build:
+      context: .\WcfService1
+      dockerfile: Dockerfile
+
+  wcfservice2:
+    image: ${DOCKER_REGISTRY-}wcfservice2
+    build:
+      context: .\WcfService2
+      dockerfile: Dockerfile
+
