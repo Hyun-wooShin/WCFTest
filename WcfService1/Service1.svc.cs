@@ -14,7 +14,7 @@ namespace WcfService1
     {
         public string GetData(string value)
         {
-            return string.Format("You entered: {0}", value+" (kubernetes)");
+            return string.Format("You entered: {0}  (kubernetes)", value);
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
