@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wcftest-wcfservice2
+  labels:
+    app: wcftest-wcfservice2
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: wcftest-wcfservice2
+      labels:
+        app: wcftest-wcfservice2
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": windows
+      containers:
+      - name: wcftest-wcfservice2
+        image: arc111.azurecr.io/wcfservice2:latest
+        ports:
+          - containerPort: 80
+  selector:
+    matchLabels:
+      app: wcftest-wcfservice2
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wcftest-wcfservice2
+spec:
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 80
+  selector:
+    app: wcftest-wcfservice2
